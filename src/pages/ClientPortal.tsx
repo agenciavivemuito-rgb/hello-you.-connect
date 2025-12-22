@@ -1,58 +1,57 @@
-import { Routes, Route, Link, useLocation } from "react-router-dom";
-import { 
-  LayoutDashboard, 
-  Target, 
-  MessageSquare, 
-  Settings, 
-  Layers, 
-  FileText, 
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
+import {
+  LayoutDashboard,
+  Target,
+  MessageSquare,
+  Settings,
+  Layers,
+  FileText,
   Menu,
   X,
   LogOut,
   Bell,
-  User
-} from "lucide-react";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import ClientDashboard from "@/components/portal/ClientDashboard";
-import ClientTraffic from "@/components/portal/ClientTraffic";
-import ClientSocialMedia from "@/components/portal/ClientSocialMedia";
-import ClientCRM from "@/components/portal/ClientCRM";
-import ClientSites from "@/components/portal/ClientSites";
-import ClientReports from "@/components/portal/ClientReports";
+  User,
+} from 'lucide-react'
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import ClientDashboard from '@/components/portal/ClientDashboard'
+import ClientTraffic from '@/components/portal/ClientTraffic'
+import ClientSocialMedia from '@/components/portal/ClientSocialMedia'
+import ClientCRM from '@/components/portal/ClientCRM'
+import ClientSites from '@/components/portal/ClientSites'
+import ClientReports from '@/components/portal/ClientReports'
+import icon from '../../public/icon.png'
 
 const ClientPortal = () => {
-  const location = useLocation();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const location = useLocation()
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   const navItems = [
-    { path: "/portal", icon: LayoutDashboard, label: "Dashboard", exact: true },
-    { path: "/portal/trafego", icon: Target, label: "Tráfego Pago" },
-    { path: "/portal/social", icon: MessageSquare, label: "Social Media" },
-    { path: "/portal/crm", icon: Settings, label: "CRM e Automações" },
-    { path: "/portal/sites", icon: Layers, label: "Sites e LPs" },
-    { path: "/portal/relatorios", icon: FileText, label: "Relatórios" },
-  ];
+    { path: '/portal', icon: LayoutDashboard, label: 'Dashboard', exact: true },
+    { path: '/portal/trafego', icon: Target, label: 'Tráfego Pago' },
+    { path: '/portal/social', icon: MessageSquare, label: 'Social Media' },
+    { path: '/portal/crm', icon: Settings, label: 'CRM e Automações' },
+    { path: '/portal/sites', icon: Layers, label: 'Sites e LPs' },
+    { path: '/portal/relatorios', icon: FileText, label: 'Relatórios' },
+  ]
 
   const isActive = (path: string, exact?: boolean) => {
-    if (exact) return location.pathname === path;
-    return location.pathname.startsWith(path);
-  };
+    if (exact) return location.pathname === path
+    return location.pathname.startsWith(path)
+  }
 
   return (
     <div className="min-h-screen bg-background flex">
       {/* Sidebar */}
       <aside
         className={`fixed inset-y-0 left-0 z-50 w-64 bg-sidebar border-r border-sidebar-border transform transition-transform duration-200 lg:translate-x-0 ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Logo */}
         <div className="h-16 flex items-center justify-between px-4 border-b border-sidebar-border">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">H</span>
-            </div>
+            <img src={icon} alt="Logo" className="w-8 h-8" />
             <span className="font-bold">
               Hello, <span className="gradient-text">you.</span>
             </span>
@@ -73,7 +72,9 @@ const ClientPortal = () => {
             </div>
             <div>
               <div className="font-medium text-sm">Empresa Demo</div>
-              <div className="text-xs text-muted-foreground">cliente@empresa.com</div>
+              <div className="text-xs text-muted-foreground">
+                cliente@empresa.com
+              </div>
             </div>
           </div>
         </div>
@@ -87,8 +88,8 @@ const ClientPortal = () => {
               onClick={() => setIsSidebarOpen(false)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
                 isActive(item.path, item.exact)
-                  ? "bg-sidebar-accent text-sidebar-primary"
-                  : "text-sidebar-foreground hover:bg-sidebar-accent/50"
+                  ? 'bg-sidebar-accent text-sidebar-primary'
+                  : 'text-sidebar-foreground hover:bg-sidebar-accent/50'
               }`}
             >
               <item.icon className="w-5 h-5" />
@@ -148,7 +149,7 @@ const ClientPortal = () => {
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ClientPortal;
+export default ClientPortal
