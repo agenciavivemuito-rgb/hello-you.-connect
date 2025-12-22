@@ -53,7 +53,7 @@ const ContactSection = () => {
             {/* Contact Info */}
             <div className="space-y-4 mb-8">
               <a
-                href="https://wa.me/5511999999999"
+                href="https://wa.me/5521993099016"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 glass-card hover:border-primary/30 transition-colors group"
@@ -68,7 +68,7 @@ const ContactSection = () => {
               </a>
 
               <a
-                href="mailto:contato@helloyou.com.br"
+                href="mailto:contatohellou.ag@gmail.com"
                 className="flex items-center gap-4 p-4 glass-card hover:border-primary/30 transition-colors group"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -76,7 +76,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <div className="font-medium">Email</div>
-                  <div className="text-sm text-muted-foreground">contato@helloyou.com.br</div>
+                  <div className="text-sm text-muted-foreground">contatohellou.ag@gmail.com</div>
                 </div>
               </a>
             </div>

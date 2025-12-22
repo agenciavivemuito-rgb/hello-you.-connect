@@ -1,23 +1,27 @@
-import { Link } from "react-router-dom";
-import { Instagram, Linkedin, Facebook, Youtube } from "lucide-react";
+import { Link } from 'react-router-dom'
+import { Instagram, Linkedin, Facebook, Youtube } from 'lucide-react'
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
 
   const services = [
-    "Tráfego Pago",
-    "Social Media",
-    "CRM e Automações",
-    "Sites e Landing Pages",
-    "Softwares e Sistemas",
-  ];
+    'Tráfego Pago',
+    'Social Media',
+    'CRM e Automações',
+    'Sites e Landing Pages',
+    'Softwares e Sistemas',
+  ]
 
   const socialLinks = [
-    { icon: Instagram, href: "https://instagram.com/helloyou", label: "Instagram" },
-    { icon: Linkedin, href: "https://linkedin.com/company/helloyou", label: "LinkedIn" },
-    { icon: Facebook, href: "https://facebook.com/helloyou", label: "Facebook" },
-    { icon: Youtube, href: "https://youtube.com/helloyou", label: "YouTube" },
-  ];
+    {
+      icon: Instagram,
+      href: 'https://instagram.com/hellou.ag',
+      label: 'Instagram',
+    },
+    // { icon: Linkedin, href: "https://linkedin.com/company/helloyou", label: "LinkedIn" },
+    // { icon: Facebook, href: "https://facebook.com/helloyou", label: "Facebook" },
+    // { icon: Youtube, href: "https://youtube.com/helloyou", label: "YouTube" },
+  ]
 
   return (
     <footer className="border-t border-border bg-card/30">
@@ -27,15 +31,17 @@ const Footer = () => {
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">H</span>
+                <span className="text-primary-foreground font-bold text-lg">
+                  H
+                </span>
               </div>
               <span className="text-xl font-bold">
                 Hello, <span className="gradient-text">you.</span>
               </span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-md mb-6">
-              Agência de marketing digital e tecnologia focada em performance e resultados reais. 
-              Transformamos estratégia em crescimento.
+              Agência de marketing digital e tecnologia focada em performance e
+              resultados reais. Transformamos estratégia em crescimento.
             </p>
 
             {/* Social Links */}
@@ -77,27 +83,42 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Links</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#sobre" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a
+                  href="#sobre"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Sobre nós
                 </a>
               </li>
               <li>
-                <a href="#processo" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a
+                  href="#processo"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Como trabalhamos
                 </a>
               </li>
               <li>
-                <a href="#resultados" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a
+                  href="#resultados"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Resultados
                 </a>
               </li>
               <li>
-                <a href="#contato" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a
+                  href="#contato"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Contato
                 </a>
               </li>
               <li>
-                <Link to="/login" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Link
+                  to="/login"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Área do Cliente
                 </Link>
               </li>
@@ -111,13 +132,17 @@ const Footer = () => {
             © {currentYear} Hello, you. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">Privacidade</a>
-            <a href="#" className="hover:text-foreground transition-colors">Termos</a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Privacidade
+            </a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Termos
+            </a>
           </div>
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
