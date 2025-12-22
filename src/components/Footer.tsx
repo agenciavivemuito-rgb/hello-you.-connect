@@ -30,11 +30,7 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">
-                  H
-                </span>
-              </div>
+              <img src="../../public/icon.png" alt="Logo" className="w-8 h-8" />
               <span className="text-xl font-bold">
                 Hello, <span className="gradient-text">you.</span>
               </span>
@@ -131,14 +127,14 @@ const Footer = () => {
           <p className="text-sm text-muted-foreground">
             © {currentYear} Hello, you. Todos os direitos reservados.
           </p>
-          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+          {/* <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">
               Privacidade
             </a>
             <a href="#" className="hover:text-foreground transition-colors">
               Termos
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

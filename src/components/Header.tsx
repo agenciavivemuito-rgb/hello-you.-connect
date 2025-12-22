@@ -1,27 +1,25 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { Menu, X } from 'lucide-react'
+import { useState } from 'react'
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navLinks = [
-    { href: "#sobre", label: "Sobre" },
-    { href: "#servicos", label: "Serviços" },
-    { href: "#processo", label: "Como Trabalhamos" },
-    { href: "#resultados", label: "Resultados" },
-    { href: "#contato", label: "Contato" },
-  ];
+    { href: '#sobre', label: 'Sobre' },
+    { href: '#servicos', label: 'Serviços' },
+    { href: '#processo', label: 'Como Trabalhamos' },
+    { href: '#resultados', label: 'Resultados' },
+    { href: '#contato', label: 'Contato' },
+  ]
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">H</span>
-          </div>
+          <img src="../../public/icon.png" alt="Logo" className="w-8 h-8" />
           <span className="text-xl font-bold">
             Hello, <span className="gradient-text">you.</span>
           </span>
@@ -47,7 +45,7 @@ const Header = () => {
               Área do Cliente
             </Button>
           </Link>
-          
+
           {/* Mobile Menu Button */}
           <button
             className="md:hidden p-2 text-muted-foreground hover:text-foreground"
@@ -81,7 +79,7 @@ const Header = () => {
         </div>
       )}
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

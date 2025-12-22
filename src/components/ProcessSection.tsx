@@ -23,7 +23,7 @@ const steps = [
     icon: TrendingUp,
     number: "04",
     title: "Otimização",
-    description: "Analisamos resultados continuamente e otimizamos para maximizar seu retorno.",
+    description: "Analisamos resultados continuamente, otimizamos e aprimoramos para maximizar o seu retorno.",
   },
 ];
 

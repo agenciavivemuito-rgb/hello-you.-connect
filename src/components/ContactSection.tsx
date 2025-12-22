@@ -1,40 +1,69 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Send, MessageCircle, Mail, Phone } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Send, MessageCircle, Mail, Phone } from 'lucide-react'
+import { useToast } from '@/hooks/use-toast'
+import emailjs from '@emailjs/browser'
 
 const ContactSection = () => {
-  const { toast } = useToast();
+  const { toast } = useToast()
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: '',
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+    e.preventDefault()
+    setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
 
-    toast({
-      title: "Mensagem enviada!",
-      description: "Entraremos em contato em breve.",
-    });
+      toast({
+        title: 'Mensagem enviada!',
+        description: 'Entraremos em contato em breve.',
+      })
 
-    setFormData({ name: "", email: "", phone: "", company: "", message: "" });
-    setIsSubmitting(false);
-  };
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: '',
+      })
+    } catch (error) {
+      console.error(error)
+      toast({
+        title: 'Erro ao enviar mensagem',
+        description: 'Tente novamente mais tarde.',
+        variant: 'destructive',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   return (
     <section id="contato" className="py-20 md:py-32 relative bg-muted/30">
@@ -42,12 +71,16 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Content */}
           <div>
-            <span className="text-primary text-sm font-medium uppercase tracking-wider">Contato</span>
+            <span className="text-primary text-sm font-medium uppercase tracking-wider">
+              Contato
+            </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-3 mb-4">
-              Vamos conversar sobre seu <span className="gradient-text">projeto</span>
+              Vamos conversar sobre seu{' '}
+              <span className="gradient-text">projeto</span>
             </h2>
             <p className="text-muted-foreground mb-8">
-              Preencha o formulário e nossa equipe entrará em contato para entender suas necessidades e apresentar a melhor solução.
+              Preencha o formulário e nossa equipe entrará em contato para
+              entender suas necessidades e apresentar a melhor solução.
             </p>
 
             {/* Contact Info */}
@@ -63,7 +96,9 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <div className="font-medium">WhatsApp</div>
-                  <div className="text-sm text-muted-foreground">Resposta rápida</div>
+                  <div className="text-sm text-muted-foreground">
+                    Resposta rápida
+                  </div>
                 </div>
               </a>
 
@@ -76,7 +111,9 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <div className="font-medium">Email</div>
-                  <div className="text-sm text-muted-foreground">contatohellou.ag@gmail.com</div>
+                  <div className="text-sm text-muted-foreground">
+                    contatohellou.ag@gmail.com
+                  </div>
                 </div>
               </a>
             </div>
@@ -87,7 +124,9 @@ const ContactSection = () => {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm font-medium mb-2 block">Nome *</label>
+                  <label className="text-sm font-medium mb-2 block">
+                    Nome *
+                  </label>
                   <Input
                     name="name"
                     value={formData.name}
@@ -98,7 +137,9 @@ const ContactSection = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-medium mb-2 block">Email *</label>
+                  <label className="text-sm font-medium mb-2 block">
+                    Email *
+                  </label>
                   <Input
                     name="email"
                     type="email"
@@ -113,7 +154,9 @@ const ContactSection = () => {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm font-medium mb-2 block">Telefone</label>
+                  <label className="text-sm font-medium mb-2 block">
+                    Telefone
+                  </label>
                   <Input
                     name="phone"
                     value={formData.phone}
@@ -123,7 +166,9 @@ const ContactSection = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-medium mb-2 block">Empresa</label>
+                  <label className="text-sm font-medium mb-2 block">
+                    Empresa
+                  </label>
                   <Input
                     name="company"
                     value={formData.company}
@@ -135,7 +180,9 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Mensagem *</label>
+                <label className="text-sm font-medium mb-2 block">
+                  Mensagem *
+                </label>
                 <Textarea
                   name="message"
                   value={formData.message}
@@ -155,7 +202,7 @@ const ContactSection = () => {
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
-                  "Enviando..."
+                  'Enviando...'
                 ) : (
                   <>
                     Enviar Mensagem
@@ -168,7 +215,7 @@ const ContactSection = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ContactSection;
+export default ContactSection
