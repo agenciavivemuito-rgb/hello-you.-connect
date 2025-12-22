@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Eye, EyeOff, ArrowLeft } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
+import icon from '../../public/icon.png'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -67,7 +68,7 @@ const Login = () => {
           {/* Logo */}
           <div className="text-center mb-8">
             <img
-              src="../../public/icon.png"
+              src={icon}
               alt="Logo"
               className="w-14 h-14 flex items-center justify-center mx-auto mb-4"
             />

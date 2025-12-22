@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Instagram, Linkedin, Facebook, Youtube } from 'lucide-react'
+import icon from '../../public/icon.png'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -30,7 +31,7 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <img src="../../public/icon.png" alt="Logo" className="w-8 h-8" />
+              <img src={icon} alt="Logo" className="w-8 h-8" />
               <span className="text-xl font-bold">
                 Hello, <span className="gradient-text">you.</span>
               </span>
