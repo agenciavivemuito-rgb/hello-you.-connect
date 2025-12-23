@@ -1,31 +1,31 @@
-import { ExternalLink, TrendingUp, Clock, CheckCircle } from "lucide-react";
+import { ExternalLink, TrendingUp, Clock, CheckCircle } from 'lucide-react'
 
 const projects = [
   {
-    name: "Site Institucional",
-    url: "https://empresa-demo.com.br",
-    status: "Publicado",
-    conversion: "4.2%",
+    name: 'Site Institucional',
+    url: 'https://empresa-demo.com.br',
+    status: 'Publicado',
+    conversion: '4.2%',
     performance: 94,
-    lastUpdate: "15/01/2025",
+    lastUpdate: '15/01/2025',
   },
   {
-    name: "Landing Page Vendas",
-    url: "https://empresa-demo.com.br/vendas",
-    status: "Publicado",
-    conversion: "8.5%",
+    name: 'Landing Page Vendas',
+    url: 'https://empresa-demo.com.br/vendas',
+    status: 'Publicado',
+    conversion: '8.5%',
     performance: 98,
-    lastUpdate: "20/01/2025",
+    lastUpdate: '20/01/2025',
   },
   {
-    name: "LP Captação Leads",
-    url: "https://empresa-demo.com.br/ebook",
-    status: "Em desenvolvimento",
-    conversion: "-",
+    name: 'LP Captação Leads',
+    url: 'https://empresa-demo.com.br/ebook',
+    status: 'Em desenvolvimento',
+    conversion: '-',
     performance: null,
-    lastUpdate: "22/01/2025",
+    lastUpdate: '22/01/2025',
   },
-];
+]
 
 const ClientSites = () => {
   return (
@@ -49,9 +49,9 @@ const ClientSites = () => {
                   <h3 className="font-semibold">{project.name}</h3>
                   <span
                     className={`text-xs px-2 py-1 rounded-full ${
-                      project.status === "Publicado"
-                        ? "bg-green-500/10 text-green-400"
-                        : "bg-yellow-500/10 text-yellow-400"
+                      project.status === 'Publicado'
+                        ? 'bg-green-500/10 text-green-400'
+                        : 'bg-yellow-500/10 text-yellow-400'
                     }`}
                   >
                     {project.status}
@@ -70,13 +70,11 @@ const ClientSites = () => {
 
               {/* Metrics */}
               <div className="flex items-center gap-6">
-                <div className="text-center">
-                  <div className="text-xs text-muted-foreground mb-1">Conversão</div>
-                  <div className="font-semibold gradient-text">{project.conversion}</div>
-                </div>
                 {project.performance && (
                   <div className="text-center">
-                    <div className="text-xs text-muted-foreground mb-1">Performance</div>
+                    <div className="text-xs text-muted-foreground mb-1">
+                      Performance
+                    </div>
                     <div className="flex items-center gap-1">
                       <div className="w-16 h-2 bg-muted rounded-full overflow-hidden">
                         <div
@@ -84,12 +82,22 @@ const ClientSites = () => {
                           style={{ width: `${project.performance}%` }}
                         />
                       </div>
-                      <span className="text-sm font-medium">{project.performance}</span>
+                      <span className="text-sm font-medium">
+                        {project.performance}
+                      </span>
                     </div>
                   </div>
                 )}
                 <div className="text-center">
-                  <div className="text-xs text-muted-foreground mb-1">Última atualização</div>
+                  <div className="text-xs text-muted-foreground mb-1">
+                    Lançamento
+                  </div>
+                  <div className="text-sm">{project.lastUpdate}</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-xs text-muted-foreground mb-1">
+                    Última atualização
+                  </div>
                   <div className="text-sm">{project.lastUpdate}</div>
                 </div>
               </div>
@@ -103,36 +111,29 @@ const ClientSites = () => {
         <h3 className="font-semibold mb-4">Observações Técnicas</h3>
         <div className="space-y-3">
           <div className="flex items-start gap-3 p-4 bg-muted/30 rounded-lg">
-            <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
             <div>
-              <div className="font-medium text-sm mb-1">SSL Ativo</div>
+              <div className="font-medium text-sm mb-1">Site Institucional</div>
               <p className="text-sm text-muted-foreground">
-                Certificado SSL configurado e renovado automaticamente para todos os projetos.
+                Certificado SSL configurado e renovado automaticamente para
+                todos os projetos.
               </p>
             </div>
           </div>
           <div className="flex items-start gap-3 p-4 bg-muted/30 rounded-lg">
-            <TrendingUp className="w-5 h-5 text-primary mt-0.5" />
             <div>
-              <div className="font-medium text-sm mb-1">SEO Otimizado</div>
+              <div className="font-medium text-sm mb-1">
+                Landing Page Vendas
+              </div>
               <p className="text-sm text-muted-foreground">
-                Todas as páginas estão otimizadas para mecanismos de busca com meta tags e schema markup.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3 p-4 bg-muted/30 rounded-lg">
-            <Clock className="w-5 h-5 text-yellow-400 mt-0.5" />
-            <div>
-              <div className="font-medium text-sm mb-1">LP Captação em Desenvolvimento</div>
-              <p className="text-sm text-muted-foreground">
-                Nova landing page para captação de leads em desenvolvimento. Previsão de entrega: 30/01/2025.
+                Todas as páginas estão otimizadas para mecanismos de busca com
+                meta tags e schema markup.
               </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ClientSites;
+export default ClientSites

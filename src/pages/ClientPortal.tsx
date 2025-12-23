@@ -11,6 +11,11 @@ import {
   LogOut,
   Bell,
   User,
+  MessageCircle,
+  CheckCircle,
+  AlertCircle,
+  Clock,
+  FileCheck,
 } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -25,19 +30,72 @@ import icon from '../../public/icon.png'
 const ClientPortal = () => {
   const location = useLocation()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
 
   const navItems = [
     { path: '/portal', icon: LayoutDashboard, label: 'Dashboard', exact: true },
     { path: '/portal/trafego', icon: Target, label: 'Tráfego Pago' },
     { path: '/portal/social', icon: MessageSquare, label: 'Social Media' },
-    { path: '/portal/crm', icon: Settings, label: 'CRM e Automações' },
+    // { path: '/portal/crm', icon: Settings, label: 'CRM e Automações' },
     { path: '/portal/sites', icon: Layers, label: 'Sites e LPs' },
-    { path: '/portal/relatorios', icon: FileText, label: 'Relatórios' },
+    { path: '/portal/documentos', icon: FileText, label: 'Documentos' },
+  ]
+
+  const notifications = [
+    {
+      id: 1,
+      title: 'Nova arte aguardando aprovação',
+      description: 'Campanha de Verão - 3 imagens',
+      time: 'Há 2 horas',
+      icon: AlertCircle,
+      iconColor: 'text-yellow-500',
+      bgColor: 'bg-yellow-500/10',
+    },
+    {
+      id: 2,
+      title: 'Relatório mensal disponível',
+      description: 'Janeiro 2025 - Tráfego Pago',
+      time: 'Hoje, 09:30',
+      icon: FileCheck,
+      iconColor: 'text-blue-500',
+      bgColor: 'bg-blue-500/10',
+    },
+    {
+      id: 3,
+      title: 'Campanha aprovada',
+      description: 'Stories Promocional',
+      time: 'Ontem, 16:45',
+      icon: CheckCircle,
+      iconColor: 'text-green-500',
+      bgColor: 'bg-green-500/10',
+    },
+    {
+      id: 4,
+      title: 'Atualização de site concluída',
+      description: 'Página institucional',
+      time: 'Ontem, 14:20',
+      icon: CheckCircle,
+      iconColor: 'text-green-500',
+      bgColor: 'bg-green-500/10',
+    },
+    {
+      id: 5,
+      title: 'Reunião agendada',
+      description: 'Review trimestral - 30/01 às 15h',
+      time: 'Há 2 dias',
+      icon: Clock,
+      iconColor: 'text-purple-500',
+      bgColor: 'bg-purple-500/10',
+    },
   ]
 
   const isActive = (path: string, exact?: boolean) => {
     if (exact) return location.pathname === path
     return location.pathname.startsWith(path)
+  }
+
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/5521993099016', '_blank', 'noopener,noreferrer')
   }
 
   return (
@@ -50,7 +108,7 @@ const ClientPortal = () => {
       >
         {/* Logo */}
         <div className="h-16 flex items-center justify-between px-4 border-b border-sidebar-border">
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/portal" className="flex items-center gap-2">
             <img src={icon} alt="Logo" className="w-8 h-8" />
             <span className="font-bold">
               Hello, <span className="gradient-text">you.</span>
@@ -98,8 +156,16 @@ const ClientPortal = () => {
           ))}
         </nav>
 
-        {/* Logout */}
-        <div className="absolute bottom-4 left-4 right-4">
+        {/* WhatsApp e Sair */}
+        <div className="grid gap-2 absolute bottom-4 left-4 right-4 space-y-2">
+          <Button
+            onClick={handleWhatsAppClick}
+            className="w-full justify-start gap-3 bg-green-600 hover:bg-green-700 text-white"
+            variant="secondary"
+          >
+            <MessageCircle className="w-4 h-4" />
+            Entrar em Contato
+          </Button>
           <Link to="/login">
             <Button variant="outline" className="w-full justify-start gap-3">
               <LogOut className="w-4 h-4" />
@@ -121,10 +187,80 @@ const ClientPortal = () => {
           </button>
 
           <div className="flex items-center gap-4 ml-auto">
-            <button className="relative text-muted-foreground hover:text-foreground">
-              <Bell className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full" />
-            </button>
+            {/* Notifications Button */}
+            <div className="relative">
+              <button
+                className="relative text-muted-foreground hover:text-foreground"
+                onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
+              >
+                <Bell className="w-5 h-5" />
+                <span className="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full" />
+              </button>
+
+              {/* Notifications Modal */}
+              {isNotificationsOpen && (
+                <>
+                  {/* Backdrop */}
+                  <div
+                    className="fixed inset-0 z-40"
+                    onClick={() => setIsNotificationsOpen(false)}
+                  />
+
+                  {/* Modal */}
+                  <div className="fixed right-4 top-16 z-50 w-80 md:w-96 bg-background border border-border rounded-lg shadow-xl">
+                    <div className="p-4 border-b border-border flex items-center justify-between">
+                      <h3 className="font-semibold">Notificações</h3>
+                      <span className="text-xs text-muted-foreground">
+                        {notifications.length} novas
+                      </span>
+                    </div>
+
+                    <div className="max-h-96 overflow-y-auto">
+                      {notifications.map((notification) => {
+                        const Icon = notification.icon
+                        return (
+                          <div
+                            key={notification.id}
+                            className="p-4 border-b border-border last:border-b-0 hover:bg-muted/50 transition-colors"
+                          >
+                            <div className="flex gap-3">
+                              <div
+                                className={`w-10 h-10 rounded-lg ${notification.bgColor} flex items-center justify-center flex-shrink-0`}
+                              >
+                                <Icon
+                                  className={`w-5 h-5 ${notification.iconColor}`}
+                                />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h4 className="font-medium text-sm mb-1">
+                                  {notification.title}
+                                </h4>
+                                <p className="text-xs text-muted-foreground mb-2">
+                                  {notification.description}
+                                </p>
+                                <div className="text-xs text-muted-foreground">
+                                  {notification.time}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+
+                    <div className="p-3 border-t border-border">
+                      <Button
+                        variant="ghost"
+                        className="w-full text-sm"
+                        onClick={() => setIsNotificationsOpen(false)}
+                      >
+                        Fechar
+                      </Button>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </header>
 
@@ -134,9 +270,9 @@ const ClientPortal = () => {
             <Route path="/" element={<ClientDashboard />} />
             <Route path="/trafego" element={<ClientTraffic />} />
             <Route path="/social" element={<ClientSocialMedia />} />
-            <Route path="/crm" element={<ClientCRM />} />
+            {/* <Route path="/crm" element={<ClientCRM />} /> */}
             <Route path="/sites" element={<ClientSites />} />
-            <Route path="/relatorios" element={<ClientReports />} />
+            <Route path="/documentos" element={<ClientReports />} />
           </Routes>
         </main>
       </div>
