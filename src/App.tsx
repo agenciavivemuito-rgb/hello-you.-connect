@@ -14,7 +14,7 @@ const queryClient = new QueryClient()
 
 const App = () => {
   // Defina esta variável para ativar/desativar a manutenção
-  const isMaintenanceMode = false // Mude para false quando quiser desativar a manutenção
+  const isMaintenanceMode = true // Mude para false quando quiser desativar a manutenção
 
   return (
     <QueryClientProvider client={queryClient}>
