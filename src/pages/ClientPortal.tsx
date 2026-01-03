@@ -16,6 +16,7 @@ import {
   AlertCircle,
   Clock,
   FileCheck,
+  Users,
 } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -38,7 +39,13 @@ const ClientPortal = () => {
     { path: '/portal/social', icon: MessageSquare, label: 'Social Media' },
     // { path: '/portal/crm', icon: Settings, label: 'CRM e Automações' },
     { path: '/portal/sites', icon: Layers, label: 'Sites e LPs' },
+    {
+      path: '/portal/influenciadores',
+      icon: Users,
+      label: 'Influenciadores',
+    },
     { path: '/portal/documentos', icon: FileText, label: 'Documentos' },
+    { path: '/portal/configuracoes', icon: Settings, label: 'Configurações' },
   ]
 
   const notifications = [

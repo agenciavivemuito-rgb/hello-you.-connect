@@ -81,7 +81,7 @@ const Login = () => {
           </div>
 
           {/* Login Type Toggle */}
-          <div className="flex gap-2 p-1 bg-muted rounded-lg mb-6">
+          {/* <div className="flex gap-2 p-1 bg-muted rounded-lg mb-6">
             <button
               onClick={() => setLoginType('client')}
               className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${
@@ -102,7 +102,7 @@ const Login = () => {
             >
               Admin
             </button>
-          </div>
+          </div> */}
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">

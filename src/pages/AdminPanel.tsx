@@ -11,6 +11,8 @@ import {
   LogOut,
   Bell,
   Shield,
+  Layers,
+  UserPlus,
 } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -27,9 +29,11 @@ const AdminPanel = () => {
 
   const navItems = [
     { path: '/admin', icon: LayoutDashboard, label: 'Dashboard', exact: true },
-    { path: '/admin/clientes', icon: Users, label: 'Clientes' },
+    { path: '/admin/clientes', icon: UserPlus, label: 'Clientes' },
     { path: '/admin/trafego', icon: Target, label: 'Tráfego Pago' },
     { path: '/admin/social', icon: MessageSquare, label: 'Social Media' },
+    { path: '/admin/sites', icon: Layers, label: 'Sites e LPs' },
+    { path: '/admin/influenciadores', icon: Users, label: 'Influenciadores' },
     { path: '/admin/configuracoes', icon: Settings, label: 'Configurações' },
   ]
 

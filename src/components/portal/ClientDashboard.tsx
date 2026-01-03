@@ -49,6 +49,11 @@ const services = [
   { name: 'Tráfego Pago', status: 'Ativo', statusColor: 'text-green-400' },
   { name: 'Social Media', status: 'Ativo', statusColor: 'text-green-400' },
   { name: 'Sites e LPs', status: 'Manutenção', statusColor: 'text-yellow-400' },
+  {
+    name: 'Influenciadores',
+    status: 'Manutenção',
+    statusColor: 'text-yellow-400',
+  },
 ]
 
 const pendingActivities = [
@@ -116,14 +121,12 @@ const ClientDashboard = () => {
 
       {/* Main Content Grid */}
       <div className="grid lg:grid-cols-3 gap-6">
-        {/* Informações Contratuais (Bloco Unificado) */}
-        <div className="glass-card p-5">
+        {/* <div className="glass-card p-5">
           <h3 className="font-semibold mb-4 flex items-center gap-2">
             <FileText className="w-4 h-4" />
             Informações Contratuais
           </h3>
           <div className="space-y-5">
-            {/* Módulos Contratados */}
             <div>
               <h4 className="text-sm font-medium text-muted-foreground mb-3">
                 Módulos Contratados
@@ -145,7 +148,6 @@ const ClientDashboard = () => {
               </div>
             </div>
 
-            {/* Informações Contratuais */}
             <div className="space-y-4 pt-4 border-t">
               <div>
                 <div className="text-xs text-muted-foreground mb-1 flex items-center gap-1">
@@ -176,7 +178,7 @@ const ClientDashboard = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Atividades Recente */}
         <div className="glass-card p-5">
