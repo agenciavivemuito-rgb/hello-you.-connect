@@ -14,7 +14,7 @@ import {
   Layers,
   UserPlus,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import AdminDashboard from '@/components/admin/AdminDashboard'
 import AdminClients from '@/components/admin/AdminClients'
@@ -26,6 +26,7 @@ import icon from '../../public/icon.png'
 const AdminPanel = () => {
   const location = useLocation()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [user, setUser] = useState({})
 
   const navItems = [
     { path: '/admin', icon: LayoutDashboard, label: 'Dashboard', exact: true },
@@ -41,6 +42,25 @@ const AdminPanel = () => {
     if (exact) return location.pathname === path
     return location.pathname.startsWith(path)
   }
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/admin/check`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          window.location.href = '/'
+        }
+
+        return res.json()
+      })
+      .then(({ user }) => {
+        setUser(user)
+      })
+      .catch(console.error)
+  }, [])
 
   return (
     <div className="min-h-screen bg-background flex">
@@ -99,7 +119,11 @@ const AdminPanel = () => {
         {/* Logout */}
         <div className="absolute bottom-4 left-4 right-4">
           <Link to="/login">
-            <Button variant="outline" className="w-full justify-start gap-3">
+            <Button
+              onClick={() => localStorage.removeItem('token')}
+              variant="outline"
+              className="w-full justify-start gap-3"
+            >
               <LogOut className="w-4 h-4" />
               Sair
             </Button>

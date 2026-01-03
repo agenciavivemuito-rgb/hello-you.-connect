@@ -12,7 +12,6 @@ const Login = () => {
   const { toast } = useToast()
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [loginType, setLoginType] = useState<'client' | 'admin'>('client')
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -23,24 +22,45 @@ const Login = () => {
     setIsLoading(true)
 
     // Simulate login
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    await fetch(`${import.meta.env.VITE_API_URL}/users/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          const isAuthError = res.status === 400
 
-    // Demo login - in production, this would be real authentication
-    if (loginType === 'admin' && formData.email === 'admin@helloyou.com.br') {
-      toast({
-        title: 'Bem-vindo, Admin!',
-        description: 'Acesso ao painel administrativo.',
-      })
-      navigate('/admin')
-    } else {
-      toast({
-        title: 'Bem-vindo(a)!',
-        description: 'Acesso ao portal do cliente.',
-      })
-      navigate('/portal')
-    }
+          toast({
+            title: isAuthError ? 'Erro de autenticação' : 'Erro desconhecido',
+            description: isAuthError
+              ? 'E-mail ou senha incorretos.'
+              : 'Erro. Por favor, tente novamente.',
+          })
 
-    setIsLoading(false)
+          throw new Error(res.statusText)
+        }
+
+        return res.json()
+      })
+      .then(({ role, token }) => {
+        localStorage.setItem('token', token)
+
+        const isAdmin = role === 'admin' || role === 'owner'
+
+        toast({
+          title: isAdmin ? 'Bem-vindo, Admin!' : 'Bem-vindo(a)!',
+          description: isAdmin
+            ? 'Acesso ao painel administrativo.'
+            : 'Acesso ao portal do cliente.',
+        })
+
+        navigate(isAdmin ? '/admin' : '/portal')
+      })
+      .catch(console.error)
+      .finally(() => setIsLoading(false))
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

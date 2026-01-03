@@ -18,7 +18,7 @@ import {
   FileCheck,
   Users,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import ClientDashboard from '@/components/portal/ClientDashboard'
 import ClientTraffic from '@/components/portal/ClientTraffic'
@@ -32,6 +32,26 @@ const ClientPortal = () => {
   const location = useLocation()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/client/check`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          window.location.href = '/'
+        }
+
+        return res.json()
+      })
+      .then(({ user }) => {
+        setUser(user)
+      })
+      .catch(console.error)
+  }, [])
 
   const navItems = [
     { path: '/portal', icon: LayoutDashboard, label: 'Dashboard', exact: true },
@@ -174,7 +194,11 @@ const ClientPortal = () => {
             Entrar em Contato
           </Button>
           <Link to="/login">
-            <Button variant="outline" className="w-full justify-start gap-3">
+            <Button
+              onClick={() => localStorage.removeItem('token')}
+              variant="outline"
+              className="w-full justify-start gap-3"
+            >
               <LogOut className="w-4 h-4" />
               Sair
             </Button>
