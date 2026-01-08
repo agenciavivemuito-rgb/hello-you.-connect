@@ -86,7 +86,7 @@ const ContactSection = () => {
             {/* Contact Info */}
             <div className="space-y-4 mb-8">
               <a
-                href="https://wa.me/5521993099016"
+                href="https://wa.me/5521966123362"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 glass-card hover:border-primary/30 transition-colors group"

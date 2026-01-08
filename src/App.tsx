@@ -24,10 +24,10 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/login" element={<Login />} /> */}
 
             {/* Rotas em manutenção */}
-            {isMaintenanceMode ? (
+            {/* {isMaintenanceMode ? (
               <>
                 <Route path="/portal/*" element={<Maintenance />} />
                 <Route path="/admin/*" element={<Maintenance />} />
@@ -37,7 +37,7 @@ const App = () => {
                 <Route path="/portal/*" element={<ClientPortal />} />
                 <Route path="/admin/*" element={<AdminPanel />} />
               </>
-            )}
+            )} */}
 
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -122,7 +122,7 @@ const ClientPortal = () => {
   }
 
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5521993099016', '_blank', 'noopener,noreferrer')
+    window.open('https://wa.me/5521966123362', '_blank', 'noopener,noreferrer')
   }
 
   return (

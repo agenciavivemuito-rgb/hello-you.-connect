@@ -41,11 +41,11 @@ const Header = () => {
 
         {/* CTA Button */}
         <div className="flex items-center gap-3">
-          <Link to="/login">
+          {/* <Link to="/login">
             <Button variant="heroOutline" size="sm" className="hidden sm:flex">
               Área do Cliente
             </Button>
-          </Link>
+          </Link> */}
 
           {/* Mobile Menu Button */}
           <button
@@ -71,11 +71,11 @@ const Header = () => {
                 {link.label}
               </a>
             ))}
-            <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+            {/* <Link to="/login" onClick={() => setIsMenuOpen(false)}>
               <Button variant="hero" className="w-full mt-2">
                 Área do Cliente
               </Button>
-            </Link>
+            </Link> */}
           </nav>
         </div>
       )}

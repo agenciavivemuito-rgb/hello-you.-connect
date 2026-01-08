@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom'
 
 const HeroSection = () => {
   return (
-    <section id="sobre" className="relative pt-32 pb-20 md:pt-40 md:pb-32">
+    <section
+      style={{ display: 'grid', placeItems: 'center', minHeight: '100dvh' }}
+      id="sobre"
+      className="relative pt-32 pb-20 md:pt-40 md:pb-32"
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
@@ -37,11 +41,11 @@ const HeroSection = () => {
                 <ArrowRight className="ml-2" />
               </Button>
             </a>
-            <Link to="/login">
+            {/* <Link to="/login">
               <Button variant="heroOutline" size="xl">
                 Área do Cliente
               </Button>
-            </Link>
+            </Link> */}
           </div>
 
           {/* Stats */}

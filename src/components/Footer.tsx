@@ -111,14 +111,14 @@ const Footer = () => {
                   Contato
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/login"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Área do Cliente
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

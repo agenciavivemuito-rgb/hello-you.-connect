@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 
 const Maintenance = () => {
   const handleContact = () => {
-    window.open('https://wa.me/5521993099016', '_blank', 'noopener,noreferrer')
+    window.open('https://wa.me/5521966123362', '_blank', 'noopener,noreferrer')
   }
 
   return (
